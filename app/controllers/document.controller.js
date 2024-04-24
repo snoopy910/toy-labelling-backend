@@ -1,4 +1,3 @@
-const { literal } = require("sequelize");
 const db = require("../models");
 const Document = db.documents;
 const Op = db.Sequelize.Op;
@@ -21,7 +20,7 @@ exports.findSome = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving documents",
+        message: "Error retrieving documents" + err,
       });
     });
 };

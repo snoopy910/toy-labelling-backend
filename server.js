@@ -24,12 +24,11 @@ db.sequelize
     console.log("Failed to sync db" + err.message);
   });
 
-// const { migrate } = require("./app/migrate/document.migrate");
-// migrate(db);
-
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to toy labelling bilby" });
 });
+
+require("./app/routes/document.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
