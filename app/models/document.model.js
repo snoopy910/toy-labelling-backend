@@ -1,13 +1,16 @@
 module.exports = (sequelize, Sequelize) => {
   const Document = sequelize.define("document", {
+    ID: {
+      type: Sequelize.INTEGER,
+    },
     title: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
     },
     body: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
     },
-    url: {
-      type: Sequelize.STRING,
+    URL: {
+      type: Sequelize.TEXT,
     },
     label: {
       type: Sequelize.ARRAY(Sequelize.STRING),

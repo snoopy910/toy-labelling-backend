@@ -14,15 +14,18 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-const db = require("./app/models/index");
+const db = require("./app/models");
 db.sequelize
-  .sync({ force: true })
+  .sync()
   .then(() => {
     console.log("synced db");
   })
   .catch((err) => {
     console.log("Failed to sync db" + err.message);
   });
+
+// const { migrate } = require("./app/migrate/document.migrate");
+// migrate(db);
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to toy labelling bilby" });
