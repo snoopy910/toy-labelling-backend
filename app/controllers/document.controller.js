@@ -9,6 +9,7 @@ exports.findSome = (req, res) => {
   Document.findAll({
     offset: offset,
     limit: count,
+    order: [["id", "ASC"]],
   })
     .then((documents) => {
       if (documents) res.send(documents);
@@ -22,5 +23,29 @@ exports.findSome = (req, res) => {
       res.status(500).send({
         message: "Error retrieving documents" + err,
       });
+    });
+};
+
+exports.updateLabel = async (req, res) => {
+  const id = req.params.id;
+  console.log(req.body.labels, typeof req.body.labels);
+  Document.update(
+    {
+      label: req.body.labels,
+    },
+    {
+      where: { ID: id },
+    }
+  )
+    .then((num) => {
+      console.log(num);
+      if (num.length === 1) {
+        res.send({ message: "Label was updated successfully" });
+      } else {
+        res.send({ message: `Cannot update the label with id=${id}` });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ message: "Error updating Label with id=" + id });
     });
 };
