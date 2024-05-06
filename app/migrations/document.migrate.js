@@ -6,7 +6,7 @@ exports.migrate = (db) => {
     const data = {
       title: document.title,
       body: document.body,
-      url: document.URL,
+      url: document.url,
       label: [],
     };
     Document.create(data);

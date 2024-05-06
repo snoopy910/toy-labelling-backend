@@ -7,10 +7,10 @@ module.exports = {
       "documents",
       [
         ...DEFAULT_DOCUMENTS.map((document) => ({
-          ID: document.ID,
+          id: document.id,
           title: document.title,
           body: document.body,
-          URL: document.URL,
+          url: document.url,
           label: null,
           createdAt: new Date(),
           updatedAt: new Date(),

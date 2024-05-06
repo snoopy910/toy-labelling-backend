@@ -28,13 +28,12 @@ exports.findSome = (req, res) => {
 
 exports.updateLabel = async (req, res) => {
   const id = req.params.id;
-  console.log(req.body.labels, typeof req.body.labels);
   Document.update(
     {
       label: req.body.labels,
     },
     {
-      where: { ID: id },
+      where: { id: id },
     }
   )
     .then((num) => {

@@ -1,6 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
   const Document = sequelize.define("document", {
-    ID: {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
       type: Sequelize.INTEGER,
     },
     title: {
@@ -9,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
     body: {
       type: Sequelize.TEXT,
     },
-    URL: {
+    url: {
       type: Sequelize.TEXT,
     },
     label: {
