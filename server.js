@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
@@ -18,7 +17,7 @@ db.sequelize
     console.log("synced db");
   })
   .catch((err) => {
-    console.log("Failed to sync db" + err.message);
+    console.log("Failed to sync db " + err.message);
   });
 
 app.get("/", (req, res) => {
