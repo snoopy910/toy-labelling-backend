@@ -26,6 +26,29 @@ exports.findSome = (req, res) => {
     });
 };
 
+exports.findOne = (req, res) => {
+  const id = req.params.id;
+
+  Document.findOne({
+    where: {
+      id: id,
+    },
+  })
+    .then((document) => {
+      if (document) res.send(document);
+      else {
+        res.status(404).send({
+          message: "Cannot find documents",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving documents" + err,
+      });
+    });
+};
+
 exports.updateLabel = async (req, res) => {
   const id = req.params.id;
   Document.update(
@@ -37,7 +60,6 @@ exports.updateLabel = async (req, res) => {
     }
   )
     .then((num) => {
-      console.log(num);
       if (num.length === 1) {
         res.send({ message: "Label was updated successfully" });
       } else {
