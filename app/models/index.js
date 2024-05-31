@@ -20,6 +20,7 @@ const db = {
   Sequelize: Sequelize,
   sequelize: sequelize,
   documents: require("./document.model")(sequelize, Sequelize),
+  labels: require("./label.model")(sequelize, Sequelize),
 };
 
 module.exports = db;

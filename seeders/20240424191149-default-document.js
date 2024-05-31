@@ -1,5 +1,6 @@
 "use strict";
 const DEFAULT_DOCUMENTS = module.require("../app/consts/documents");
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {

@@ -1,6 +1,23 @@
 const db = require("../models");
 const Document = db.documents;
-const Op = db.Sequelize.Op;
+
+exports.findLength = (req, res) => {
+  Document.count()
+    .then((count) => {
+      let response = { count: count };
+      if (count) res.send(response);
+      else {
+        res.status(404).send({
+          message: "Cannot get count of documents",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving count of documents " + err,
+      });
+    });
+};
 
 exports.findSome = (req, res) => {
   const offset = req.query.offset;

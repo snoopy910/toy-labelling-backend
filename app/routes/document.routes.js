@@ -4,6 +4,7 @@ module.exports = (app) => {
   var router = require("express").Router();
 
   router.get("/", documentControllers.findSome);
+  router.get("/length", documentControllers.findLength);
   router.get("/:id", documentControllers.findOne);
   router.put("/:id", documentControllers.updateLabel);
 
