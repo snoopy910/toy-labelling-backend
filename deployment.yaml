@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-hello
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: k8s-hello
+  template:
+    metadata:
+      labels:
+        app: k8s-hello
+    spec:
+      containers:
+        - name: k8s-hello
+          image: snoopy910/k8s-hello:2.0.0
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "125m"
+          ports:
+            - containerPort: 8080

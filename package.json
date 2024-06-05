@@ -20,6 +20,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "node-fetch": "^3.3.2",
     "pg": "^8.11.5",
     "pg-hstore": "^2.3.4"
   },
