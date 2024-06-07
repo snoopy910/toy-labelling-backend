@@ -78,9 +78,11 @@ exports.updateLabel = async (req, res) => {
   )
     .then((num) => {
       if (num.length === 1) {
-        res.send({ message: "Label was updated successfully" });
+        res.status(201).send({ message: "Label was updated successfully" });
       } else {
-        res.send({ message: `Cannot update the label with id=${id}` });
+        res
+          .status(400)
+          .send({ message: `Cannot update the label with id=${id}` });
       }
     })
     .catch((err) => {
